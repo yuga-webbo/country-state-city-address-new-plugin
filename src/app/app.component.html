@@ -1,0 +1,61 @@
+<div class="container">
+  <header>
+    <h1>Complete your profile</h1>
+    <h4>You can update this later in "My Settings"</h4>
+  </header>
+
+  <form [formGroup]="addressFormGroup" *ngIf="countries?.length > 0">
+
+    <div class="form-field">
+      <ng-select required formControlName="language" placeholder="Select Language" (change)="reset($event)">
+        <ng-option *ngFor="let code of languages" [value]="code.code">
+          {{ code.name }}
+        </ng-option>
+      </ng-select>
+    </div>
+
+    <div class="form-field">
+      <ng-select required formControlName="country" placeholder="Country" (change)="selectionChange($event, 0)">
+        <ng-option *ngFor="let country of countries" [value]="country.geonameId">
+          {{ country.countryName }}
+        </ng-option>
+      </ng-select>
+    </div>
+
+    <div class="form-field">
+      <ng-select required formControlName="state" placeholder="State / County Province" [addTag]="true"
+        (change)="selectionChange($event, 1)">
+        <ng-option *ngFor="let state of states" [value]="state.geonameId">
+          {{ state.toponymName }}
+        </ng-option>
+      </ng-select>
+    </div>
+
+
+    <div class="form-field">
+      <ng-select required formControlName="county" placeholder="County" [addTag]="true"
+        (change)="selectionChange($event)">
+        <ng-option *ngFor="let county of counties" [value]="county.geonameId">
+          {{ county.toponymName }}
+        </ng-option>
+      </ng-select>
+    </div>
+
+    <div class="form-field">
+      <ng-select required formControlName="city" placeholder="City / Town" [addTag]="true">
+        <ng-option *ngFor="let city of cities" [value]="city.geonameId">
+          {{ city.toponymName }}
+        </ng-option>
+      </ng-select>
+    </div>
+  </form>
+
+
+  <div>
+    <h3>Form Value</h3>
+    <pre>
+    {{addressFormGroup.value | json}}
+  </pre>
+  </div>
+
+</div>

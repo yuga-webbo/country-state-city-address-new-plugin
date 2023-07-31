@@ -1,0 +1,33 @@
+@import '~@ng-select/ng-select/themes/default.theme.css';
+
+* {
+  font-family: Lato;
+}
+
+.container {
+  display: grid;
+  padding: 2rem;
+  margin: 8vh auto;
+  max-width: 768px;
+}
+
+.container > :last-child {
+  margin-top: 10vh;
+  align-self: end;
+}
+
+h4 {
+  font-weight: normal;
+  color: #999;
+}
+
+form {
+  display: grid;
+  gap: 1rem;
+}
+
+.form-field {
+  display: grid;
+  gap: 1rem;
+  max-width: 1024px;
+}
